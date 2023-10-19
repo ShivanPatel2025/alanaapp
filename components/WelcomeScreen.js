@@ -13,16 +13,16 @@ const styles = StyleSheet.create({
   },
 });
 
-function HomeScreen({ navigation }) {
+function WelcomeScreen({ navigation }) {
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>This is the home to Plantly!</Text>
+      <Text style={styles.text}>Welcome to Plantly!</Text>
       <Button
-        title="Go to Details"
-        onPress={() => navigation.navigate("Details")}
+        title="Go to Home"
+        onPress={() => navigation.navigate("Home")}
       />
     </View>
   );
 }
 
-export default HomeScreen;
+export default WelcomeScreen;
