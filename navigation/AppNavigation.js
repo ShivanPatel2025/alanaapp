@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { createStackNavigator } from '@react-navigation/stack';
+import { createStackNavigator, CardStyleInterpolators } from "@react-navigation/stack";
 import { useNavigation } from '@react-navigation/native'; // Import useNavigation hook
 
 import HomeScreen from "../screens/HomeScreen.js";
@@ -22,12 +22,15 @@ function AppNavigation() {
     return () => clearTimeout(timer);
   }, [navigation]);
   return (
-    <Stack.Navigator initialRouteName="Loading" headerMode="none">
+    <Stack.Navigator initialRouteName="Loading"
+      screenOptions={{ headerShown: false }}
+    >
       <Stack.Screen name="Home" component={HomeScreen} />
       <Stack.Screen name="Details" component={DetailsScreen} />
       <Stack.Screen name="Plants" component={PlantsScreen} />
       <Stack.Screen name="Loading" component={LoadingScreen} />
-      <Stack.Screen name="Welcome" component={WelcomeScreen} />
+      <Stack.Screen name="Welcome" component={WelcomeScreen} options={{ cardStyleInterpolator: CardStyleInterpolators.forFadeFromBottomAndroid }}
+      />
     </Stack.Navigator>
   );
 }
