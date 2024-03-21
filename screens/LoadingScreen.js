@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, Button, StyleSheet, Image } from "react-native";
+import { View, StyleSheet, Image } from "react-native";
 import LottieView from 'lottie-react-native';
 
 const styles = StyleSheet.create({
@@ -17,9 +17,10 @@ const styles = StyleSheet.create({
       width: 600, // Adjust the width of the animation
       height: 600, // Adjust the height of the animation
     },
-    text: {
-      fontSize: 24, // Adjust the font size as needed
-      marginTop: 12, // Adjust the spacing between animation and text
+    wordmark: {
+      height: 50, // Reduced height
+      resizeMode: 'contain',
+      marginTop: 20, // You can adjust the margin as needed for positioning
     },
   });
   
@@ -30,14 +31,17 @@ function LoadingScreen({ navigation }) {
         <View style={styles.container}>
           <View style={styles.animationContainer}>
             <LottieView
-              source={require('../assets/LoadingLottie.json')}
+              source={require('../assets/AcaciaLoading.json')}
               autoPlay
               loop
               style={styles.animation}
-              speed={2.0}
+              speed={1.0}
             />
           </View>
-          <Text style={styles.text}>Plantly</Text>
+          <Image 
+            source={require('../assets/AcaciaWordmarkBlack.png')}
+            style={styles.wordmark}
+          />
         </View>
       );
 }
