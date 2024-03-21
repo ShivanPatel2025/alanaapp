@@ -61,6 +61,26 @@ const styles = StyleSheet.create({
     color: 'black',
     fontSize: 14,
   },
+  featureButtonContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    marginTop: -3, // Reduced margin to bring buttons closer to the calendar
+    marginBottom: 10, // Adjusted for spacing below buttons if needed
+  },
+  featureButton: {
+    backgroundColor: '#DAA520', // Old Gold color for the button
+    paddingVertical: 10, // Vertical padding for button size
+    paddingHorizontal: 20, // Horizontal padding for wider buttons
+    borderRadius: 20,
+    width: '45%', // Adjusted width for better spacing
+    alignItems: 'center', // This centers the button text horizontally
+    justifyContent: 'center', // This centers the button text vertically
+  },
+  featureButtonText: {
+    color: 'black',
+    fontWeight: 'bold',
+    textAlign: 'center', // Ensures the text is centered
+  },
 });
 
 // Dummy events data
@@ -90,6 +110,20 @@ function HomeScreen({ navigation }) {
         </ScrollView>
 
         <WeekCalendar />
+        <View style={styles.featureButtonContainer}>
+          <TouchableOpacity 
+            style={styles.featureButton} 
+            onPress={() => console.log("Coming Features Pressed")} // Update this onPress event as needed
+          >
+            <Text style={styles.featureButtonText}>Coming Features</Text>
+          </TouchableOpacity>
+          <TouchableOpacity 
+            style={styles.featureButton} 
+            onPress={() => navigation.navigate("ChapterAttendance")} // Assuming you have a screen/route named "ChapterAttendance"
+          >
+            <Text style={styles.featureButtonText}>Chapter Attendance</Text>
+          </TouchableOpacity>
+        </View>
       </ScrollView>
       <View style={styles.bottomNavigation}>
         <TouchableOpacity style={styles.navButton} onPress={() => navigation.navigate("GroupChat")}>
