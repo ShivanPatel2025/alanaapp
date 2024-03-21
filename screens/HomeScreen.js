@@ -1,5 +1,6 @@
 import React from "react";
-import { View, Text, TouchableOpacity, StyleSheet, Image, ScrollView, SafeAreaView, FlatList } from "react-native";
+import { View, Text, TouchableOpacity, StyleSheet, Image, SafeAreaView, ScrollView } from "react-native";
+import WeekCalendar from '../components/WeeklyCalendar.js'; // Ensure this path is correct
 
 const styles = StyleSheet.create({
   safeArea: {
@@ -18,29 +19,8 @@ const styles = StyleSheet.create({
     color: '#DAA520', // Old Gold for the header text
     fontSize: 24,
     fontWeight: "bold",
-    marginBottom: 10,
-    alignSelf: "center",
-  },
-  upcomingEventsContainer: {
-    paddingHorizontal: 10,
-  },
-  eventCard: {
-    backgroundColor: 'black',
-    borderRadius: 8,
-    padding: 16,
-    marginRight: 10,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  eventTitle: {
-    color: '#DAA520',
-    fontSize: 16,
-    fontWeight: 'bold',
-    marginBottom: 5,
-  },
-  eventDetails: {
-    fontSize: 14,
-    color: '#DAA520',
+    textAlign: 'center',
+    padding: 10,
   },
   bottomNavigation: {
     flexDirection: "row",
@@ -56,14 +36,38 @@ const styles = StyleSheet.create({
   icon: {
     width: 24,
     height: 24,
-    marginBottom: 5,
+  },
+  eventScrollView: {
+    flexDirection: 'row',
+    marginTop: 10,
+    paddingBottom: 20,
+  },
+  eventCard: {
+    backgroundColor: 'white',
+    borderRadius: 8,
+    padding: 16,
+    marginRight: 10,
+    marginLeft: 10,
+    alignItems: 'center',
+    justifyContent: 'center',
+    minWidth: 150,
+  },
+  eventTitle: {
+    color: 'black',
+    fontSize: 16,
+    fontWeight: 'bold',
+  },
+  eventTime: {
+    color: 'black',
+    fontSize: 14,
   },
 });
 
+// Dummy events data
 const events = [
-  { title: "Aphi Exchange", date: "3/20", time: "8PM-12AM" },
-  { title: "Find The Forty", date: "3/22", time: "9PM-11PM" },
-  { title: "Dayger", date: "3/23", time: "1PM-4PM" },
+  { name: "Aphi Exchange", date: "3/20", time: "8PM-12AM" },
+  { name: "Find The Forty", date: "3/22", time: "9PM-11PM" },
+  { name: "Dayger", date: "3/23", time: "1PM-4PM" },
 ];
 
 function HomeScreen({ navigation }) {
@@ -74,32 +78,28 @@ function HomeScreen({ navigation }) {
           <Image source={require('../assets/AcaciaWordmarkWhite.png')} style={{ height: 50, resizeMode: 'contain' }} />
         </View>
         <Text style={styles.upcomingEventsHeader}>Upcoming Events</Text>
-        <FlatList
-          horizontal
-          data={events}
-          showsHorizontalScrollIndicator={false}
-          contentContainerStyle={styles.upcomingEventsContainer}
-          renderItem={({ item }) => (
-            <View style={styles.eventCard}>
-              <Text style={styles.eventTitle}>{item.title}</Text>
-              <Text style={styles.eventDetails}>{item.date} | {item.time}</Text>
+        
+        {/* Horizontal scroll view of events */}
+        <ScrollView horizontal showsHorizontalScrollIndicator={false} style={styles.eventScrollView}>
+          {events.map((event, index) => (
+            <View key={index} style={styles.eventCard}>
+              <Text style={styles.eventTitle}>{event.name}</Text>
+              <Text style={styles.eventTime}>{`${event.date} | ${event.time}`}</Text>
             </View>
-          )}
-          keyExtractor={(item, index) => index.toString()}
-        />
+          ))}
+        </ScrollView>
+
+        <WeekCalendar />
       </ScrollView>
       <View style={styles.bottomNavigation}>
         <TouchableOpacity style={styles.navButton} onPress={() => navigation.navigate("GroupChat")}>
           <Image source={require('../assets/chat.png')} style={styles.icon} />
-          {/* <Text style={{ color: '#DAA520' }}>Chat</Text> */}
         </TouchableOpacity>
         <TouchableOpacity style={styles.navButton} onPress={() => navigation.navigate("Home")}>
           <Image source={require('../assets/home.png')} style={styles.icon} />
-          {/* <Text style={{ color: '#DAA520' }}>Home</Text> */}
         </TouchableOpacity>
         <TouchableOpacity style={styles.navButton} onPress={() => navigation.navigate("EmergencyNotification")}>
           <Image source={require('../assets/siren.png')} style={styles.icon} />
-          {/* <Text style={{ color: '#DAA520' }}>Emergency</Text> */}
         </TouchableOpacity>
       </View>
     </SafeAreaView>
