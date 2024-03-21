@@ -9,20 +9,19 @@ const styles = StyleSheet.create({
   },
   text: {
     fontSize: 20,
-    marginBottom: 20,
   },
 });
 
-function PlantsScreen({ navigation }) {
+function EmergencyScreen({ navigation }) {
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>Welcome to Plant Screen!</Text>
+      <Text style={styles.text}>This is the Emergency Screen</Text>
       <Button
-        title="Go to Loading"
-        onPress={() => navigation.navigate("Loading")}
+        title="Go back to Home Screen"
+        onPress={() => navigation.navigate("Home")}
       />
     </View>
   );
 }
 
-export default PlantsScreen;
+export default EmergencyScreen;

@@ -3,10 +3,11 @@ import { createStackNavigator, CardStyleInterpolators } from "@react-navigation/
 import { useNavigation } from '@react-navigation/native'; // Import useNavigation hook
 
 import HomeScreen from "../screens/HomeScreen.js";
-import DetailsScreen from "../screens/DetailsScreen.js";
-import PlantsScreen from "../screens/PlantsScreen.js";
+import EmergencyScreen from "../screens/EmergencyScreen.js";
+import GroupChatScreen from "../screens/GroupChatScreen.js";
 import LoadingScreen from "../screens/LoadingScreen.js";
 import WelcomeScreen from '../screens/WelcomeScreen.js';
+import ChapterAttendanceScreen from "../screens/ChapterAttendanceScreen.js";
 
 const Stack = createStackNavigator();
 
@@ -16,21 +17,29 @@ function AppNavigation() {
   useEffect(() => {
     const timer = setTimeout(() => {
       navigation.navigate('Welcome');
-    }, 5000);
+    }, 3200);
 
     // Clear the timer when the component is unmounted
     return () => clearTimeout(timer);
   }, [navigation]);
   return (
-    <Stack.Navigator initialRouteName="Loading"
+    <Stack.Navigator
+      initialRouteName="Loading"
       screenOptions={{ headerShown: false }}
     >
       <Stack.Screen name="Home" component={HomeScreen} />
-      <Stack.Screen name="Details" component={DetailsScreen} />
-      <Stack.Screen name="Plants" component={PlantsScreen} />
+      <Stack.Screen name="Emergency" component={EmergencyScreen} />
+      <Stack.Screen name="GroupChat" component={GroupChatScreen} />
       <Stack.Screen name="Loading" component={LoadingScreen} />
-      <Stack.Screen name="Welcome" component={WelcomeScreen} options={{ cardStyleInterpolator: CardStyleInterpolators.forFadeFromBottomAndroid }}
+      <Stack.Screen
+        name="Welcome"
+        component={WelcomeScreen}
+        options={{
+          cardStyleInterpolator:
+            CardStyleInterpolators.forFadeFromBottomAndroid,
+        }}
       />
+      <Stack.Screen name="ChapterAttendance" component={ChapterAttendanceScreen} />
     </Stack.Navigator>
   );
 }

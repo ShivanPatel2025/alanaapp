@@ -9,19 +9,20 @@ const styles = StyleSheet.create({
   },
   text: {
     fontSize: 20,
+    marginBottom: 20,
   },
 });
 
-function DetailsScreen({ navigation }) {
+function GroupChatScreen({ navigation }) {
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>This is the Details Screen</Text>
+      <Text style={styles.text}>This is the GroupChat Screen</Text>
       <Button
-        title="Go to Plant List"
-        onPress={() => navigation.navigate("Plants")}
+        title="Go back to Home Screen"
+        onPress={() => navigation.navigate("Home")}
       />
     </View>
   );
 }
 
-export default DetailsScreen;
+export default GroupChatScreen;

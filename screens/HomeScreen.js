@@ -95,30 +95,39 @@ function HomeScreen({ navigation }) {
     <SafeAreaView style={styles.safeArea}>
       <ScrollView style={styles.container}>
         <View style={styles.wordmarkContainer}>
-          <Image source={require('../assets/AcaciaWordmarkWhite.png')} style={{ height: 50, resizeMode: 'contain' }} />
+          <Image
+            source={require("../assets/AcaciaWordmarkWhite.png")}
+            style={{ height: 50, resizeMode: "contain" }}
+          />
         </View>
         <Text style={styles.upcomingEventsHeader}>Upcoming Events</Text>
-        
+
         {/* Horizontal scroll view of events */}
-        <ScrollView horizontal showsHorizontalScrollIndicator={false} style={styles.eventScrollView}>
+        <ScrollView
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          style={styles.eventScrollView}
+        >
           {events.map((event, index) => (
             <View key={index} style={styles.eventCard}>
               <Text style={styles.eventTitle}>{event.name}</Text>
-              <Text style={styles.eventTime}>{`${event.date} | ${event.time}`}</Text>
+              <Text
+                style={styles.eventTime}
+              >{`${event.date} | ${event.time}`}</Text>
             </View>
           ))}
         </ScrollView>
 
         <WeekCalendar />
         <View style={styles.featureButtonContainer}>
-          <TouchableOpacity 
-            style={styles.featureButton} 
+          <TouchableOpacity
+            style={styles.featureButton}
             onPress={() => console.log("Coming Features Pressed")} // Update this onPress event as needed
           >
             <Text style={styles.featureButtonText}>Coming Features</Text>
           </TouchableOpacity>
-          <TouchableOpacity 
-            style={styles.featureButton} 
+          <TouchableOpacity
+            style={styles.featureButton}
             onPress={() => navigation.navigate("ChapterAttendance")} // Assuming you have a screen/route named "ChapterAttendance"
           >
             <Text style={styles.featureButtonText}>Chapter Attendance</Text>
@@ -126,14 +135,23 @@ function HomeScreen({ navigation }) {
         </View>
       </ScrollView>
       <View style={styles.bottomNavigation}>
-        <TouchableOpacity style={styles.navButton} onPress={() => navigation.navigate("GroupChat")}>
-          <Image source={require('../assets/chat.png')} style={styles.icon} />
+        <TouchableOpacity
+          style={styles.navButton}
+          onPress={() => navigation.navigate("GroupChat")}
+        >
+          <Image source={require("../assets/chat.png")} style={styles.icon} />
         </TouchableOpacity>
-        <TouchableOpacity style={styles.navButton} onPress={() => navigation.navigate("Home")}>
-          <Image source={require('../assets/home.png')} style={styles.icon} />
+        <TouchableOpacity
+          style={styles.navButton}
+          onPress={() => navigation.navigate("Home")}
+        >
+          <Image source={require("../assets/home.png")} style={styles.icon} />
         </TouchableOpacity>
-        <TouchableOpacity style={styles.navButton} onPress={() => navigation.navigate("EmergencyNotification")}>
-          <Image source={require('../assets/siren.png')} style={styles.icon} />
+        <TouchableOpacity
+          style={styles.navButton}
+          onPress={() => navigation.navigate("Emergency")}
+        >
+          <Image source={require("../assets/siren.png")} style={styles.icon} />
         </TouchableOpacity>
       </View>
     </SafeAreaView>
