@@ -2,11 +2,11 @@ import React, { useEffect } from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import { useNavigation } from '@react-navigation/native'; // Import useNavigation hook
 
-import HomeScreen from "../components/HomeScreen.js";
-import DetailsScreen from "../components/DetailsScreen.js";
-import PlantsScreen from "../components/PlantsScreen.js";
-import LoadingScreen from "../components/LoadingScreen.js";
-import WelcomeScreen from '../components/WelcomeScreen.js';
+import HomeScreen from "../screens/HomeScreen.js";
+import DetailsScreen from "../screens/DetailsScreen.js";
+import PlantsScreen from "../screens/PlantsScreen.js";
+import LoadingScreen from "../screens/LoadingScreen.js";
+import WelcomeScreen from '../screens/WelcomeScreen.js';
 
 const Stack = createStackNavigator();
 
