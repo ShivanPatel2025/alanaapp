@@ -1,6 +1,9 @@
 import React from "react";
-import { View, Text, TouchableOpacity, StyleSheet, Image, SafeAreaView, ScrollView } from "react-native";
-import WeekCalendar from '../components/WeeklyCalendar.js'; // Ensure this path is correct
+import { View, Text, StyleSheet, Image, SafeAreaView, ScrollView, TouchableOpacity } from "react-native";
+import EventCard from '../components/EventCard.js'; 
+import FeatureButton from '../components/FeatureButton.js'; 
+import NavigationBar from '../components/NavigationBar.js'; 
+import WeekCalendar from '../components/WeeklyCalendar.js'; 
 
 const styles = StyleSheet.create({
   safeArea: {
@@ -22,64 +25,16 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     padding: 10,
   },
-  bottomNavigation: {
-    flexDirection: "row",
-    justifyContent: "space-around",
-    padding: 20,
-    backgroundColor: 'black',
-    borderTopWidth: 1,
-    borderColor: '#DAA520',
-  },
-  navButton: {
-    alignItems: "center",
-  },
-  icon: {
-    width: 24,
-    height: 24,
-  },
   eventScrollView: {
     flexDirection: 'row',
     marginTop: 10,
     paddingBottom: 20,
   },
-  eventCard: {
-    backgroundColor: 'white',
-    borderRadius: 8,
-    padding: 16,
-    marginRight: 10,
-    marginLeft: 10,
-    alignItems: 'center',
-    justifyContent: 'center',
-    minWidth: 150,
-  },
-  eventTitle: {
-    color: 'black',
-    fontSize: 16,
-    fontWeight: 'bold',
-  },
-  eventTime: {
-    color: 'black',
-    fontSize: 14,
-  },
   featureButtonContainer: {
     flexDirection: 'row',
     justifyContent: 'space-around',
-    marginTop: -3, // Reduced margin to bring buttons closer to the calendar
-    marginBottom: 10, // Adjusted for spacing below buttons if needed
-  },
-  featureButton: {
-    backgroundColor: '#DAA520', // Old Gold color for the button
-    paddingVertical: 10, // Vertical padding for button size
-    paddingHorizontal: 20, // Horizontal padding for wider buttons
-    borderRadius: 20,
-    width: '45%', // Adjusted width for better spacing
-    alignItems: 'center', // This centers the button text horizontally
-    justifyContent: 'center', // This centers the button text vertically
-  },
-  featureButtonText: {
-    color: 'black',
-    fontWeight: 'bold',
-    textAlign: 'center', // Ensures the text is centered
+    marginTop: -5,
+    marginBottom: 10,
   },
 });
 
@@ -109,51 +64,25 @@ function HomeScreen({ navigation }) {
           style={styles.eventScrollView}
         >
           {events.map((event, index) => (
-            <View key={index} style={styles.eventCard}>
-              <Text style={styles.eventTitle}>{event.name}</Text>
-              <Text
-                style={styles.eventTime}
-              >{`${event.date} | ${event.time}`}</Text>
-            </View>
+            <EventCard key={index} name={event.name} date={event.date} time={event.time} />
           ))}
         </ScrollView>
 
         <WeekCalendar />
+
         <View style={styles.featureButtonContainer}>
-          <TouchableOpacity
-            style={styles.featureButton}
-            onPress={() => console.log("Coming Features Pressed")} // Update this onPress event as needed
-          >
-            <Text style={styles.featureButtonText}>Coming Features</Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            style={styles.featureButton}
-            onPress={() => navigation.navigate("ChapterAttendance")} // Assuming you have a screen/route named "ChapterAttendance"
-          >
-            <Text style={styles.featureButtonText}>Chapter Attendance</Text>
-          </TouchableOpacity>
+          <FeatureButton
+            title="Coming Features"
+            onPress={() => console.log("Coming Features Pressed")}
+          />
+          <FeatureButton
+            title="Chapter Attendance"
+            onPress={() => navigation.navigate("ChapterAttendance")} 
+          />
         </View>
       </ScrollView>
-      <View style={styles.bottomNavigation}>
-        <TouchableOpacity
-          style={styles.navButton}
-          onPress={() => navigation.navigate("GroupChat")}
-        >
-          <Image source={require("../assets/chat.png")} style={styles.icon} />
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={styles.navButton}
-          onPress={() => navigation.navigate("Home")}
-        >
-          <Image source={require("../assets/home.png")} style={styles.icon} />
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={styles.navButton}
-          onPress={() => navigation.navigate("Emergency")}
-        >
-          <Image source={require("../assets/siren.png")} style={styles.icon} />
-        </TouchableOpacity>
-      </View>
+
+      <NavigationBar navigation={navigation} />
     </SafeAreaView>
   );
 }
