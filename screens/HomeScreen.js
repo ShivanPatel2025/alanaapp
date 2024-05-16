@@ -1,24 +1,29 @@
 import React from "react";
 import { View, Text, StyleSheet, Image, SafeAreaView, ScrollView, TouchableOpacity } from "react-native";
 import NavigationBar from '../components/NavigationBar.js'; 
+import SearchBar from '../components/SearchBar.js';
 
 const styles = StyleSheet.create({
   safeArea: {
     flex: 1,
-    backgroundColor: '#FFFFFF', // Changed to a plain white background
+    backgroundColor: '#FFFFFF',
   },
   container: {
     flex: 1,
     backgroundColor: '#FFFFFF',
   },
   headerImage: {
-    width: '100%',
-    height: 100, // Adjust according to your asset
-    resizeMode: 'contain'
+    width: 120, // Make logo larger
+    height: 60,
+    resizeMode: 'contain',
+    alignSelf: 'flex-start',
+    marginLeft: 20,
+    marginTop: 10,
+    marginBottom: 10, // Added space below logo
   },
   bannerImage: {
     width: '100%',
-    height: 150, // Adjust according to your asset
+    height: 150,
     resizeMode: 'cover',
     marginBottom: 20
   },
@@ -28,29 +33,36 @@ const styles = StyleSheet.create({
     borderColor: '#000',
     borderRadius: 20,
     padding: 10,
-    justifyContent: 'center',
-    alignItems: 'center'
   },
   categoryContainer: {
     flexDirection: 'row',
-    justifyContent: 'center',
-    marginVertical: 20
+    paddingHorizontal: 10,
+    overflow: 'scroll'
+  },
+  categoryTitle: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    marginLeft: 20,
+    marginTop: 20,
+    marginBottom: 10,
   },
   productContainer: {
     flexDirection: 'row',
     justifyContent: 'space-around',
-    flexWrap: 'wrap'
+    flexWrap: 'wrap',
+    padding: 10
   },
   productCard: {
-    width: '45%', // Nearly half the screen width minus some margin
+    width: '44%', // This ensures 2 products per row
     margin: 10,
     borderWidth: 1,
     borderColor: '#ddd',
-    borderRadius: 8
+    borderRadius: 8,
+    overflow: 'hidden'
   },
   productImage: {
     width: '100%',
-    height: 100, // Fixed height for consistency
+    height: 100,
     resizeMode: 'cover'
   },
   productText: {
@@ -61,6 +73,13 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontWeight: 'bold',
     marginBottom: 10
+  },
+  productsTitle: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    marginLeft: 20,
+    marginTop: 20,
+    marginBottom: 10,
   }
 });
 
@@ -79,17 +98,24 @@ function HomeScreen({ navigation }) {
           source={require("../assets/alana_logo_text.png")}
           style={styles.headerImage}
         />
+        <SearchBar defaultText="Search Product" />
         <Image
           source={require("../assets/banner.png")}
           style={styles.bannerImage}
         />
-        <View style={styles.categoryContainer}>
+        <Text style={styles.categoryTitle}>Categories</Text>
+        <ScrollView
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          style={styles.categoryContainer}
+        >
           {categories.map((category, index) => (
             <TouchableOpacity key={index} style={styles.categoryButton}>
               <Text>{category}</Text>
             </TouchableOpacity>
           ))}
-        </View>
+        </ScrollView>
+        <Text style={styles.productsTitle}>For You ></Text>
         <View style={styles.productContainer}>
           {products.map((product, index) => (
             <View key={index} style={styles.productCard}>
