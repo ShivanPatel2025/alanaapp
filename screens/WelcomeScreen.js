@@ -4,65 +4,104 @@ import { View, Text, TextInput, TouchableOpacity, StyleSheet, Image } from 'reac
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'black',
+    backgroundColor: '#FAFFF7', // Green White
     padding: 20,
+    justifyContent: 'space-between',  // Ensure there's space distribution,    
   },
   logo: {
     alignSelf: 'center',
-    height: 120,
+    height: 126,
     resizeMode: 'contain',
     marginTop: 60,
-    marginBottom: 40,
+    marginBottom: 0,
   },
   titleText: {
-    fontSize: 30,
-    color: '#DAA520', // Old Gold
-    fontWeight: 'bold',
+    fontSize: 22,
+    color: '#648B61', // Dark Green
+    fontWeight: '500',
     textAlign: 'center',
-    marginBottom: 30,
+    marginBottom: 0,
+    fontFamily: 'Futura',
+
+
+  },
+  sloganText: {
+    fontSize: 16,
+    color: '#616161', // Dark Gray
+    fontWeight: '400',
+    textAlign: 'center',
+    marginBottom: 60,
+    fontFamily: 'Futura',
+
+
   },
   input: {
     width: '100%',
     height: 50,
-    backgroundColor: '#333', // Dark grey
-    borderRadius: 25,
+    backgroundColor: '#F1F1F1', // Dark grey
+    borderRadius: 15,
     paddingHorizontal: 20,
-    color: '#DAA520', // Old Gold
-    marginBottom: 20,
+    color: '#616161', // Light grey
+    marginBottom: 15,
+    marginTop: 0,
     fontSize: 18,
+    fontFamily: 'Futura',
+  },
+  forgotPasswordText: {
+    fontSize: 16,
+    color: '#5B7E58', // Dark Green
+    fontWeight: '400',
+    textAlign: 'right',
+    marginBottom: 60,
+    fontFamily: 'Futura',
+
   },
   loginButton: {
-    backgroundColor: '#DAA520', // Old Gold
+    backgroundColor: '#648B61', // Dark Green
     borderRadius: 25,
     height: 50,
     justifyContent: 'center',
     alignItems: 'center',
     elevation: 3, // Shadow for Android
     marginBottom: 20,
+    fontFamily: 'Futura',
+
   },
   loginText: {
-    color: 'black',
-    fontWeight: 'bold',
-    fontSize: 20,
+    color: '#F9FBF8', // Green Offwhite
+    fontWeight: "450",
+    fontSize: 18,
+    fontFamily: 'Futura',
+
   },
   signUpText: {
-    color: '#DAA520', // Old Gold
+    color: '#648B61', // Dark Green
     textAlign: 'center',
     fontSize: 16,
     marginBottom: 40,
+    fontFamily: 'Futura',
+
   },
-  exploreButton: {
-    borderColor: '#DAA520',
-    borderWidth: 1,
-    borderRadius: 25,
-    height: 50,
+  orLoginWithText: {
+    fontSize: 16,
+    color: '#616161', // Dark Grey
+    fontWeight: '400',
+    textAlign: 'center',
+    marginBottom: 30,
+    fontFamily: 'Futura',
+
+  },
+  signInLogo: {
+    width: 45,
+    height: 45,
+    marginHorizontal: 12.5,
+  },
+  signInLogoContainer: {
+    flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
-  },
-  exploreText: {
-    color: '#DAA520',
-    fontSize: 18,
-  },
+    marginBottom: 90, // add some bottom margin
+  }
 });
 
 function WelcomeScreen({ navigation }) {
@@ -71,40 +110,44 @@ function WelcomeScreen({ navigation }) {
 
   return (
     <View style={styles.container}>
-      <Image source={require('../assets/CoatOfArms.png')} style={styles.logo} />
-      <Text style={styles.titleText}>Welcome to Acacia!</Text>
-      <TextInput
-        style={styles.input}
-        placeholder="Username/Email"
-        placeholderTextColor='#DAA520'
-        value={userEmail}
-        onChangeText={(text) => setUserEmail(text)}
-      />
-      <TextInput
-        style={styles.input}
-        placeholder="Password"
-        placeholderTextColor='#DAA520'
-        secureTextEntry={true}
-        value={password}
-        onChangeText={(text) => setPassword(text)}
-      />
-      <TouchableOpacity
-        style={styles.loginButton}
-        onPress={() => {
-          // Login logic here
-        }}
-      >
-        <Text style={styles.loginText}>Log In</Text>
-      </TouchableOpacity>
-      <Text style={styles.signUpText}>
-        New to Acacia? <Text style={{ color: 'white', textDecorationLine: 'underline' }}>Sign Up</Text>
-      </Text>
-      <TouchableOpacity
-        style={styles.exploreButton}
-        onPress={() => navigation.navigate('Home')}
-      >
-        <Text style={styles.exploreText}>Explore Acacia</Text>
-      </TouchableOpacity>
+      <View>
+        <Image source={require('../assets/alana_logo_no_text.png')} style={styles.logo} />
+        <Text style={styles.titleText}>Alana</Text>
+        <Text style={styles.sloganText}>Where Authenticity Matters</Text>
+        <TextInput
+          style={styles.input}
+          placeholder="Username"
+          placeholderTextColor='#616161'
+          value={userEmail}
+          onChangeText={(text) => setUserEmail(text)}
+        />
+        <TextInput
+          style={styles.input}
+          placeholder="Password"
+          placeholderTextColor='#616161'
+          secureTextEntry={true}
+          value={password}
+          onChangeText={(text) => setPassword(text)}
+        />
+        <Text style={styles.forgotPasswordText}>Forgot Password?</Text>
+        <TouchableOpacity
+          style={styles.loginButton}
+          onPress={() => {
+            // Login logic here
+          }}
+        >
+          <Text style={styles.loginText}>Log In</Text>
+        </TouchableOpacity>
+        <Text style={styles.signUpText}>
+          New to Alana? <Text style={{ color: '#648B61', textDecorationLine: 'underline' }}>Sign Up</Text>
+        </Text>
+        <Text style={styles.orLoginWithText}>Or Login With</Text>
+      </View>
+      <View style={styles.signInLogoContainer}>
+        <Image source={require('../assets/instagram.png')} style={styles.signInLogo} />
+        <Image source={require('../assets/google.png')} style={styles.signInLogo} />
+        <Image source={require('../assets/facebook.png')} style={styles.signInLogo} />
+      </View>
     </View>
   );
 }
