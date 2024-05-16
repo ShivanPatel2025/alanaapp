@@ -133,7 +133,7 @@ function WelcomeScreen({ navigation }) {
         <TouchableOpacity
           style={styles.loginButton}
           onPress={() => {
-            // Login logic here
+            navigation.navigate('Home');
           }}
         >
           <Text style={styles.loginText}>Log In</Text>

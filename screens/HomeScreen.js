@@ -1,87 +1,105 @@
 import React from "react";
 import { View, Text, StyleSheet, Image, SafeAreaView, ScrollView, TouchableOpacity } from "react-native";
-import EventCard from '../components/EventCard.js'; 
-import FeatureButton from '../components/FeatureButton.js'; 
 import NavigationBar from '../components/NavigationBar.js'; 
-import WeekCalendar from '../components/WeeklyCalendar.js'; 
 
 const styles = StyleSheet.create({
   safeArea: {
     flex: 1,
-    backgroundColor: '#DAA520', // Old Gold color
+    backgroundColor: '#FFFFFF', // Changed to a plain white background
   },
   container: {
     flex: 1,
-    backgroundColor: 'black',
+    backgroundColor: '#FFFFFF',
   },
-  wordmarkContainer: {
-    alignItems: "center",
-    paddingVertical: 20,
+  headerImage: {
+    width: '100%',
+    height: 100, // Adjust according to your asset
+    resizeMode: 'contain'
   },
-  upcomingEventsHeader: {
-    color: '#DAA520', // Old Gold for the header text
-    fontSize: 24,
-    fontWeight: "bold",
-    textAlign: 'center',
+  bannerImage: {
+    width: '100%',
+    height: 150, // Adjust according to your asset
+    resizeMode: 'cover',
+    marginBottom: 20
+  },
+  categoryButton: {
+    marginHorizontal: 10,
+    borderWidth: 1,
+    borderColor: '#000',
+    borderRadius: 20,
     padding: 10,
+    justifyContent: 'center',
+    alignItems: 'center'
   },
-  eventScrollView: {
+  categoryContainer: {
     flexDirection: 'row',
-    marginTop: 10,
-    paddingBottom: 20,
+    justifyContent: 'center',
+    marginVertical: 20
   },
-  featureButtonContainer: {
+  productContainer: {
     flexDirection: 'row',
     justifyContent: 'space-around',
-    marginTop: -5,
-    marginBottom: 10,
+    flexWrap: 'wrap'
   },
+  productCard: {
+    width: '45%', // Nearly half the screen width minus some margin
+    margin: 10,
+    borderWidth: 1,
+    borderColor: '#ddd',
+    borderRadius: 8
+  },
+  productImage: {
+    width: '100%',
+    height: 100, // Fixed height for consistency
+    resizeMode: 'cover'
+  },
+  productText: {
+    textAlign: 'center',
+    marginVertical: 10
+  },
+  productPrice: {
+    textAlign: 'center',
+    fontWeight: 'bold',
+    marginBottom: 10
+  }
 });
 
-// Dummy events data
-const events = [
-  { name: "Aphi Exchange", date: "3/20", time: "8PM-12AM" },
-  { name: "Find The Forty", date: "3/22", time: "9PM-11PM" },
-  { name: "Dayger", date: "3/23", time: "1PM-4PM" },
+const categories = ["Health & Wellness", "Coffee & Tea", "Beauty & Personal"];
+const products = [
+  { name: "5 SENSE Life of the Party", price: "$29.00", image: require('../assets/demoimage1.png') },
+  { name: "Assorted Chocolate Gold 4 pc.", price: "$10.00", image: require('../assets/demoimage2.png') },
+  { name: "Wellness Boosters", price: "$15.00", image: require('../assets/demoimage3.png') }
 ];
 
 function HomeScreen({ navigation }) {
   return (
     <SafeAreaView style={styles.safeArea}>
       <ScrollView style={styles.container}>
-        <View style={styles.wordmarkContainer}>
-          <Image
-            source={require("../assets/AcaciaWordmarkWhite.png")}
-            style={{ height: 50, resizeMode: "contain" }}
-          />
-        </View>
-        <Text style={styles.upcomingEventsHeader}>Upcoming Events</Text>
-
-        {/* Horizontal scroll view of events */}
-        <ScrollView
-          horizontal
-          showsHorizontalScrollIndicator={false}
-          style={styles.eventScrollView}
-        >
-          {events.map((event, index) => (
-            <EventCard key={index} name={event.name} date={event.date} time={event.time} />
+        <Image
+          source={require("../assets/alana_logo_text.png")}
+          style={styles.headerImage}
+        />
+        <Image
+          source={require("../assets/banner.png")}
+          style={styles.bannerImage}
+        />
+        <View style={styles.categoryContainer}>
+          {categories.map((category, index) => (
+            <TouchableOpacity key={index} style={styles.categoryButton}>
+              <Text>{category}</Text>
+            </TouchableOpacity>
           ))}
-        </ScrollView>
-
-        <WeekCalendar />
-
-        <View style={styles.featureButtonContainer}>
-          <FeatureButton
-            title="Coming Features"
-            onPress={() => console.log("Coming Features Pressed")}
-          />
-          <FeatureButton
-            title="Chapter Attendance"
-            onPress={() => navigation.navigate("ChapterAttendance")} 
-          />
+        </View>
+        <View style={styles.productContainer}>
+          {products.map((product, index) => (
+            <View key={index} style={styles.productCard}>
+              <Image source={product.image} style={styles.productImage} />
+              <Text style={styles.productText}>{product.name}</Text>
+              <Text style={styles.productPrice}>{product.price}</Text>
+            </View>
+          ))}
         </View>
       </ScrollView>
-
       <NavigationBar navigation={navigation} />
     </SafeAreaView>
   );
