@@ -6,15 +6,15 @@ import SearchBar from '../components/SearchBar.js';
 const styles = StyleSheet.create({
   safeArea: {
     flex: 1,
-    backgroundColor: '#FFFFFF',
+    backgroundColor: '#FAFFF7',
   },
   container: {
     flex: 1,
-    backgroundColor: '#FFFFFF',
+    backgroundColor: '#FAFFF7',
   },
   headerImage: {
-    width: 120, // Make logo larger
-    height: 60,
+    width: 150, // Make logo larger
+    height: 70,
     resizeMode: 'contain',
     alignSelf: 'flex-start',
     marginLeft: 20,
@@ -22,29 +22,37 @@ const styles = StyleSheet.create({
     marginBottom: 10, // Added space below logo
   },
   bannerImage: {
-    width: '100%',
+    width: '90%',
     height: 150,
     resizeMode: 'cover',
-    marginBottom: 20
+    marginTop: 20,
+    marginBottom: 20,
+    marginLeft: 20,
+    marginRight: 20,
+    borderRadius: 10
+
   },
   categoryButton: {
-    marginHorizontal: 10,
+    marginHorizontal: 7,
     borderWidth: 1,
-    borderColor: '#000',
-    borderRadius: 20,
-    padding: 10,
+    borderRadius: 15,
+    padding: 8,
+    backgroundColor: '#D9D9D9',
+    borderColor: '#D9D9D9',
   },
   categoryContainer: {
     flexDirection: 'row',
     paddingHorizontal: 10,
-    overflow: 'scroll'
+    overflow: 'scroll',
+    color: '#616161',
   },
   categoryTitle: {
-    fontSize: 16,
+    fontSize: 22,
     fontWeight: 'bold',
     marginLeft: 20,
     marginTop: 20,
     marginBottom: 10,
+    color: '#5B7E58'
   },
   productContainer: {
     flexDirection: 'row',
@@ -75,11 +83,12 @@ const styles = StyleSheet.create({
     marginBottom: 10
   },
   productsTitle: {
-    fontSize: 16,
+    fontSize: 22,
     fontWeight: 'bold',
     marginLeft: 20,
     marginTop: 20,
     marginBottom: 10,
+    color: '#5B7E58'
   }
 });
 
