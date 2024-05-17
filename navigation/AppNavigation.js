@@ -17,7 +17,7 @@ function AppNavigation() {
   useEffect(() => {
     const timer = setTimeout(() => {
       navigation.navigate('Welcome');
-    }, 3200);
+    }, 1600);
 
     // Clear the timer when the component is unmounted
     return () => clearTimeout(timer);

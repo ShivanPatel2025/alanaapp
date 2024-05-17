@@ -4,7 +4,9 @@ import { Camera } from 'expo-camera';
 
 export default function ScanScreen() {
   const [hasPermission, setHasPermission] = useState(null);
-  const [type, setType] = useState(CameraType.back);
+  console.log(Camera)
+  console.log(Camera.Constants) // undefined
+  const [type, setType] = useState(Camera.Constants.Type.back);
 
   useEffect(() => {
     (async () => {
