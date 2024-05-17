@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "start": "node node_modules/react-native/local-cli/cli.js start"
+    "start": "expo start"
   },
   "dependencies": {
     "@react-native/metro-config": "^0.74.0",
@@ -13,11 +13,11 @@
     "cors": "^2.8.5",
     "dotenv": "^16.3.1",
     "expo": "^51.0.5",
+    "expo-camera": "~15.0.9",
     "express": "^4.18.2",
     "lottie-react-native": "^6.3.1",
     "mongoose": "^7.6.3",
-    "react-native": "^0.72.10",
-    "react-native-calendars": "^1.1304.1"
+    "react-native": "^0.74.0"
   },
   "devDependencies": {
     "metro-react-native-babel-preset": "^0.77.0"
