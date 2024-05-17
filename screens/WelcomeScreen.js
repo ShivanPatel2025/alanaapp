@@ -5,7 +5,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#FAFFF7', // Green White
-    padding: 20,
+    padding: 35,
     justifyContent: 'space-between',  // Ensure there's space distribution,    
   },
   logo: {
@@ -20,10 +20,8 @@ const styles = StyleSheet.create({
     color: '#648B61', // Dark Green
     fontWeight: '500',
     textAlign: 'center',
-    marginBottom: 0,
+    marginBottom: 10,
     fontFamily: 'Futura',
-
-
   },
   sloganText: {
     fontSize: 16,
@@ -32,19 +30,17 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     marginBottom: 60,
     fontFamily: 'Futura',
-
-
   },
   input: {
     width: '100%',
-    height: 50,
+    height: 49,
     backgroundColor: '#F1F1F1', // Dark grey
     borderRadius: 15,
     paddingHorizontal: 20,
     color: '#616161', // Light grey
     marginBottom: 15,
     marginTop: 0,
-    fontSize: 18,
+    fontSize: 16,
     fontFamily: 'Futura',
   },
   forgotPasswordText: {
@@ -52,35 +48,31 @@ const styles = StyleSheet.create({
     color: '#5B7E58', // Dark Green
     fontWeight: '400',
     textAlign: 'right',
-    marginBottom: 60,
+    marginBottom: 40,
     fontFamily: 'Futura',
-
   },
   loginButton: {
     backgroundColor: '#648B61', // Dark Green
-    borderRadius: 25,
-    height: 50,
+    borderRadius: 15,
+    height: 49,
     justifyContent: 'center',
     alignItems: 'center',
     elevation: 3, // Shadow for Android
     marginBottom: 20,
     fontFamily: 'Futura',
-
   },
   loginText: {
     color: '#F9FBF8', // Green Offwhite
-    fontWeight: "450",
-    fontSize: 18,
+    fontWeight: "500",
+    fontSize: 16,
     fontFamily: 'Futura',
-
   },
   signUpText: {
     color: '#648B61', // Dark Green
     textAlign: 'center',
     fontSize: 16,
-    marginBottom: 40,
+    marginBottom: 30,
     fontFamily: 'Futura',
-
   },
   orLoginWithText: {
     fontSize: 16,
@@ -89,7 +81,6 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     marginBottom: 30,
     fontFamily: 'Futura',
-
   },
   signInLogo: {
     width: 45,

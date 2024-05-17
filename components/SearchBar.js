@@ -6,11 +6,12 @@ const SearchBar = () => {
   return (
     <View style={styles.container}>
       <Image
-        source={require('../assets/magnify.png')} // Add your magnifying glass icon image here
+        source={require("../assets/magnify.png")} // Add your magnifying glass icon image here
         style={styles.icon}
       />
       <TextInput
         placeholder="Search Product"
+        placeholderTextColor="#616161"
         style={styles.input}
       />
     </View>
@@ -22,9 +23,9 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     backgroundColor: '#F0F0F0',
-    borderRadius: 10,
+    borderRadius: 27,
     marginHorizontal: 20,
-    paddingHorizontal: 10,
+    paddingHorizontal: 20,
   },
   input: {
     flex: 1,
