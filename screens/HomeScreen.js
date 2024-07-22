@@ -137,7 +137,7 @@ function HomeScreen({ navigation }) {
         <View style={styles.productContainer}>
           {products.map((product, index) => (
             <View key={index} style={styles.productCard}>
-              <Image source={product.image} style={styles.productImage} />
+              <Image soeurce={product.image} style={styles.productImage} />
               <Text style={styles.productPrice}>{product.price}</Text>
               <Text style={styles.productName}>{product.name}</Text>
               <Text style={styles.productBrand}>{product.brand}</Text>
